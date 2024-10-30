@@ -15,7 +15,7 @@ function sendMessage() {
   inputBox.value = "";
 
   // API Call to n8n Webhook
-  axios.post("https://your-webhook-url.com/webhook", { message })
+  axios.post("https://n8n.ai-solution.org/webhook-test/28b891e3-bfc8-49ca-b59c-359997074752", { message })
     .then(response => {
       const botMessage = response.data.answer || "Sorry, something went wrong.";
       displayMessage(botMessage, "bot-message");
