@@ -28,7 +28,7 @@ function sendMessage() {
     console.log("Nachricht an displayMessage gesendet:", message);  // Debugging Log
 
     // API Call to n8n Webhook
-    axios.post("https://n8n.ai-solution.org/webhook-test/28b891e3-bfc8-49ca-b59c-359997074752", { message })
+    axios.post("https://n8n.ai-solution.org/webhook/28b891e3-bfc8-49ca-b59c-359997074752", { message })
         .then(response => {
             // Log the full response to see what we get back
             console.log("API Antwort:", response);
