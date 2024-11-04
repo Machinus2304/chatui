@@ -17,14 +17,12 @@ body {
   animation: initial-pop 1s ease;
 }
 
-/* Chat-Symbol */
 .chat-icon {
   width: 40px;
   height: 40px;
-  background: url('https://path/to/modern-icon.png') no-repeat center center / contain;
+  background: url('https://path/to/original-icon.png') no-repeat center center / contain;
 }
 
-/* Animation für das Chat-Symbol */
 @keyframes initial-pop {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.3); }
@@ -50,16 +48,16 @@ body {
   right: 20px;
   width: 100%;
   max-width: 400px;
-  background: rgba(34, 34, 34, 0.7); /* Nur der Hintergrund des Containers hat Transparenz */
+  background: rgba(34, 34, 34, 0.6); /* 60% Transparenz für den Hintergrund */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   display: none;
   flex-direction: column;
 }
 
-/* Chat-Header (keine Transparenz) */
+/* Chat-Header */
 .chat-header {
-  background-color: #222; /* Dunkler Hintergrund ohne Transparenz */
+  background-color: #222;
   padding: 10px;
   color: white;
   font-weight: bold;
@@ -73,7 +71,7 @@ body {
   font-size: 18px;
 }
 
-/* Chat-Box (keine Transparenz für Nachrichten) */
+/* Chat-Box */
 .chat-box {
   padding: 15px;
   max-height: 300px;
@@ -94,21 +92,22 @@ body {
 }
 
 .user-message {
-  background-color: #0078d4; /* Blau ohne Transparenz */
+  background-color: #0078d4;
   align-self: flex-end;
 }
 
 .bot-message {
-  background-color: #444; /* Dunkler Hintergrund ohne Transparenz */
+  background-color: #444;
+  border: 1px solid #222; /* Dunkler Rand für Joras Nachrichten */
   align-self: flex-start;
 }
 
-/* Eingabefeld (keine Transparenz) */
+/* Eingabefeld */
 .chat-input-container {
   display: flex;
   padding: 10px;
   border-top: 1px solid #444;
-  background-color: #222; /* Hintergrund des Eingabefelds ohne Transparenz */
+  background-color: #222;
 }
 
 #chat-input {
