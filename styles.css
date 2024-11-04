@@ -9,12 +9,19 @@ body {
   right: 20px;
   font-size: 40px;
   cursor: pointer;
-  animation: bounce 1s ease infinite;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: pop-in 1.2s ease forwards;
+  transform-origin: center;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .chat-container {
@@ -27,21 +34,23 @@ body {
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .chat-header {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
-  color: #fff;
   font-size: 16px;
+  color: #ffffff;
 }
 
 .close-chat {
   cursor: pointer;
-  font-weight: bold;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .chat-box {
@@ -51,6 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-size: 15px;
 }
 
 .chat-input-container {
@@ -90,7 +100,6 @@ body {
   border-radius: 8px;
   max-width: 80%;
   word-wrap: break-word;
-  font-size: 14px;
   position: relative;
 }
 
