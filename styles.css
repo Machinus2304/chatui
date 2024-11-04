@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background-color: #121212;
   font-family: Arial, sans-serif;
   margin: 0;
 }
@@ -11,18 +11,14 @@ body {
 .chat-container {
   width: 100%;
   max-width: 400px;
-  background-color: #fff;
+  background-color: rgba(30, 30, 30, 0.9); /* Dunkler Hintergrund mit Transparenz */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Leicht stärkerer Schatten */
   overflow: hidden;
 }
 
 .chat-header {
-  background-color: #0078d4;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  font-weight: bold;
+  display: none; /* Entfernt den Header */
 }
 
 .chat-box {
@@ -37,19 +33,25 @@ body {
 .chat-input-container {
   display: flex;
   padding: 10px;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Leichte Trennlinie oben */
 }
 
 #chat-input {
   flex: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ddd;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1); /* Dunkler Hintergrund mit Transparenz */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Transparenter Rand */
   border-radius: 5px;
 }
 
+#chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* Hellerer Placeholder */
+}
+
 #send-button {
-  background-color: #0078d4;
+  background-color: #1e88e5; /* Blaues Design für den Button */
   color: white;
   border: none;
   padding: 10px 15px;
@@ -57,10 +59,11 @@ body {
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  transition: background-color 0.3s; /* Weiche Farbänderung beim Hover */
 }
 
 #send-button:hover {
-  background-color: #005bb5;
+  background-color: #1565c0; /* Dunkleres Blau beim Hover */
 }
 
 .message {
@@ -69,16 +72,17 @@ body {
   border-radius: 8px;
   max-width: 80%;
   word-wrap: break-word;
+  font-size: 15px;
 }
 
 .user-message {
-  background-color: #0078d4;
+  background-color: #1e88e5;
   color: white;
   align-self: flex-end;
 }
 
 .bot-message {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
   align-self: flex-start;
 }
