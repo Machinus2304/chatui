@@ -1,4 +1,3 @@
-// Show/hide chat when clicking on the icon
 document.getElementById("chat-icon").addEventListener("click", () => {
   document.getElementById("chat-container").classList.toggle("hidden");
 });
@@ -7,15 +6,17 @@ document.getElementById("close-chat").addEventListener("click", () => {
   document.getElementById("chat-container").classList.add("hidden");
 });
 
-// Event Listener für den "Send"-Button
 document.getElementById("send-button").addEventListener("click", sendMessage);
 
-// Event Listener für die Enter-Taste im Eingabefeld
 document.getElementById("chat-input").addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     sendMessage();
   }
 });
+
+window.onload = function () {
+  displayMessage("Hallo, ich bin Jora, Ihr KI-Chatbot. Wie kann ich Ihnen helfen?", "bot-message");
+};
 
 async function sendMessage() {
   const inputBox = document.getElementById("chat-input");
