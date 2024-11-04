@@ -7,9 +7,14 @@ function toggleChat() {
     chatIcon.style.display = "none";
   } else {
     chatContainer.style.display = "none";
-    chatIcon.style.display = "block";
+    chatIcon.style.display = "flex";
   }
 }
+
+window.onload = () => {
+  chatContainer.style.display = "none";
+  chatIcon.style.display = "flex";
+};
 
 document.getElementById("send-button").addEventListener("click", sendMessage);
 
