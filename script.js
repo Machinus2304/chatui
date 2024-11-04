@@ -25,8 +25,21 @@ function sendMessage() {
             displayMessage(botMessage, "bot-message");
         })
         .catch(error => {
-            // Display a user-friendly error message
-            displayMessage("Error: Could not reach the server.", "bot-message");
+    // Display a user-friendly error message
+    displayMessage("Error: Could not reach the server.", "bot-message");
+
+    // Log detailed error information
+    console.error("Es gab einen Fehler:", error);
+    if (error.response) {
+        console.error("Status Code:", error.response.status);
+        console.error("Headers:", error.response.headers);
+        console.error("Data:", error.response.data);
+    } else if (error.request) {
+        console.error("Die Anfrage wurde gesendet, aber keine Antwort erhalten:", error.request);
+    } else {
+        console.error("Fehler beim Anfragenaufbau:", error.message);
+    }
+});
 
             // Log the error to the console for further inspection
             console.error("Es gab einen Fehler:", error);
