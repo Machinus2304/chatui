@@ -1,33 +1,44 @@
 body {
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: #f0f2f5;
   margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
 }
 
-/* Container für den Chat-Button */
+/* Container für das Chat-Symbol */
 .chat-icon-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .chat-icon {
   font-size: 24px;
+  background: #0078d4;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Chat-Container */
 .chat-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   width: 100%;
   max-width: 300px;
-  background: rgba(34, 34, 34, 0.9); /* Leicht transparente Hintergrundfarbe */
+  background: rgba(34, 34, 34, 0.6); /* 60% Transparenz für den Hintergrund */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   display: none;
@@ -43,6 +54,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .chat-header .close-btn {
@@ -53,7 +66,7 @@ body {
 /* Chat-Box */
 .chat-box {
   padding: 15px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -67,7 +80,7 @@ body {
   border-radius: 8px;
   max-width: 80%;
   word-wrap: break-word;
-  color: white;
+  color: #fff;
 }
 
 .user-message {
@@ -77,6 +90,7 @@ body {
 
 .bot-message {
   background-color: #444;
+  border: 1px solid #333;
   align-self: flex-start;
 }
 
@@ -86,6 +100,8 @@ body {
   padding: 10px;
   border-top: 1px solid #444;
   background-color: #333;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #chat-input {
