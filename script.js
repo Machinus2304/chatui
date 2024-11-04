@@ -1,3 +1,6 @@
+alert("script.js wurde geladen");
+console.log("script.js wurde geladen");
+
 console.log("script.js geladen");
 // Event Listener für den "Send"-Button
 document.getElementById("send-button").addEventListener("click", () => {
