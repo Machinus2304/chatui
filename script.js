@@ -1,19 +1,33 @@
 const chatContainer = document.getElementById("chatContainer");
 const chatIcon = document.getElementById("chatIcon");
 
+// Chat ein-/ausblenden
 function toggleChat() {
   if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
     chatContainer.style.display = "flex";
-    chatIcon.style.display = "none";
+    chatIcon.classList.add("hidden");
   } else {
     chatContainer.style.display = "none";
-    chatIcon.style.display = "flex";
+    chatIcon.classList.remove("hidden");
   }
 }
 
+// Initiales Öffnen und anschließendes leichtes Aufpoppen alle 5 Sekunden
 window.onload = () => {
-  chatContainer.style.display = "none";
-  chatIcon.style.display = "flex";
+  chatContainer.style.display = "flex";
+  chatIcon.classList.add("hidden");
+
+  setTimeout(() => {
+    chatContainer.style.display = "none";
+    chatIcon.classList.remove("hidden");
+    chatIcon.classList.add("blink");
+
+    setInterval(() => {
+      if (chatContainer.style.display === "none") {
+        chatIcon.classList.toggle("blink");
+      }
+    }, 5000);
+  }, 2000);
 };
 
 document.getElementById("send-button").addEventListener("click", sendMessage);
