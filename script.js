@@ -1,67 +1,52 @@
-alert("script.js wurde geladen");
-console.log("script.js geladen");
+// Show/hide chat when clicking on the icon
+document.getElementById("chat-icon").addEventListener("click", () => {
+  document.getElementById("chat-container").classList.toggle("hidden");
+});
+
+document.getElementById("close-chat").addEventListener("click", () => {
+  document.getElementById("chat-container").classList.add("hidden");
+});
 
 // Event Listener für den "Send"-Button
-document.getElementById("send-button").addEventListener("click", () => {
-    console.log("Send-Button wurde geklickt");
-    sendMessage();
-});
+document.getElementById("send-button").addEventListener("click", sendMessage);
 
 // Event Listener für die Enter-Taste im Eingabefeld
 document.getElementById("chat-input").addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        console.log("Enter-Taste gedrückt");
-        sendMessage();
-    }
+  if (event.key === "Enter") {
+    sendMessage();
+  }
 });
 
 async function sendMessage() {
-    console.log("sendMessage function gestartet");  // Debugging Log
+  const inputBox = document.getElementById("chat-input");
+  const message = inputBox.value.trim();
 
-    const inputBox = document.getElementById("chat-input");
-    const message = inputBox.value.trim();
+  if (message === "") return;
 
-    if (message === "") {
-        console.log("Leere Nachricht, nichts zu senden");  // Debugging Log
-        return;
-    }
+  displayMessage(message, "user-message");
+  inputBox.value = "";
 
-    displayMessage(message, "user-message");
-    inputBox.value = "";
-    console.log("Nachricht an displayMessage gesendet:", message);  // Debugging Log
+  try {
+    const response = await fetch("https://n8n.ai-solution.org/webhook/28b891e3-bfc8-49ca-b59c-359997074752", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: message })
+    });
 
-    try {
-        console.log("Vor dem API-Aufruf mit Fetch");  // Debugging Log
-        const response = await fetch("https://n8n.ai-solution.org/webhook/28b891e3-bfc8-49ca-b59c-359997074752", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ message: message })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Server responded with status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("API Antwort:", data);  // Debugging Log
-
-        // Extrahiere `text` aus `response` und zeige es an
-        const botMessage = data.response.text ? data.response.text : "Sorry, something went wrong.";
-        displayMessage(botMessage, "bot-message");
-    } catch (error) {
-        displayMessage("Error: Could not reach the server.", "bot-message");
-        console.error("Es gab einen Fehler:", error);  // Debugging Log für Fehlerdetails
-    }
+    const data = await response.json();
+    const botMessage = data.response.text || "Sorry, something went wrong.";
+    displayMessage(botMessage, "bot-message");
+  } catch (error) {
+    displayMessage("Error: Could not reach the server.", "bot-message");
+    console.error("Error:", error);
+  }
 }
 
 function displayMessage(text, className) {
-    console.log("displayMessage aufgerufen mit Text:", text);  // Debugging Log
-    const chatBox = document.getElementById("chat-box");
-    const messageElement = document.createElement("div");
-    messageElement.className = `message ${className}`;
-    messageElement.textContent = text;
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight;
+  const chatBox = document.getElementById("chat-box");
+  const messageElement = document.createElement("div");
+  messageElement.className = `message ${className}`;
+  messageElement.textContent = text;
+  chatBox.appendChild(messageElement);
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
