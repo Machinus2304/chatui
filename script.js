@@ -47,8 +47,8 @@ async function sendMessage() {
         const data = await response.json();
         console.log("API Antwort:", data);  // Debugging Log
 
-        // Check if `data.answer` exists and use it as bot response
-        const botMessage = data.answer ? data.answer : "Sorry, something went wrong.";
+        // Extrahiere `text` aus `response` und zeige es an
+        const botMessage = data.response.text ? data.response.text : "Sorry, something went wrong.";
         displayMessage(botMessage, "bot-message");
     } catch (error) {
         displayMessage("Error: Could not reach the server.", "bot-message");
