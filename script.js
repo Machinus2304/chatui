@@ -1,7 +1,3 @@
-alert("script.js wurde geladen");
-console.log("script.js wurde geladen");
-
-console.log("script.js geladen");
 // Event Listener für den "Send"-Button
 document.getElementById("send-button").addEventListener("click", () => {
     console.log("Send-Button wurde geklickt");
@@ -40,17 +36,20 @@ async function sendMessage() {
             },
             body: JSON.stringify({ message: message })
         });
-        
+
         if (!response.ok) {
             throw new Error(`Server responded with status: ${response.status}`);
         }
 
-        const data = await response.json();
-        console.log("API Antwort:", data);  // Debugging Log
-        displayMessage(data.answer || "Sorry, something went wrong.", "bot-message");
+        const data = await response.json();  // Debugging Log
+        console.log("API Antwort:", data);
+
+        // Extrahiere die eigentliche Antwort aus der JSON-Struktur
+        const botMessage = data.answer || data.text || "Sorry, something went wrong.";
+        displayMessage(botMessage, "bot-message");
     } catch (error) {
         displayMessage("Error: Could not reach the server.", "bot-message");
-        console.error("Es gab einen Fehler:", error);  // Debugging Log für Fehlerdetails
+        console.error("Es gab einen Fehler:", error);  // Debugging Log für Fehldetails
     }
 }
 
