@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat UI</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat UI</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">Chat Assistant</div>
-        <div id="chat-box" class="chat-box"></div>
-        <div class="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off">
-            <button id="send-button">Send</button>
-        </div>
+  <div id="chat-icon" class="chat-icon">💬</div>
+  
+  <div class="chat-container hidden" id="chat-container">
+    <div class="chat-header">Jora <span id="close-chat" class="close-chat">×</span></div>
+    <div id="chat-box" class="chat-box"></div>
+    <div class="chat-input-container">
+      <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off">
+      <button id="send-button">Send</button>
     </div>
+  </div>
 </body>
 </html>
