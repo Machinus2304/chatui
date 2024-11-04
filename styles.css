@@ -3,22 +3,21 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #121212;
+  background: linear-gradient(135deg, #3b8d99, #6b6b83, #aa4b6b);
   font-family: Arial, sans-serif;
   margin: 0;
+  color: #fff;
 }
 
 .chat-container {
   width: 100%;
   max-width: 400px;
-  background-color: rgba(30, 30, 30, 0.9); /* Dunkler Hintergrund mit Transparenz */
+  background-color: rgba(255, 255, 255, 0.1); /* Leicht transparente Box */
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Leicht stärkerer Schatten */
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
   overflow: hidden;
-}
-
-.chat-header {
-  display: none; /* Entfernt den Header */
 }
 
 .chat-box {
@@ -33,7 +32,7 @@ body {
 .chat-input-container {
   display: flex;
   padding: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Leichte Trennlinie oben */
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #chat-input {
@@ -41,48 +40,70 @@ body {
   padding: 10px;
   font-size: 16px;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.1); /* Dunkler Hintergrund mit Transparenz */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Transparenter Rand */
-  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
 }
 
 #chat-input::placeholder {
-  color: rgba(255, 255, 255, 0.6); /* Hellerer Placeholder */
+  color: rgba(255, 255, 255, 0.7);
 }
 
 #send-button {
-  background-color: #1e88e5; /* Blaues Design für den Button */
-  color: white;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 10px 15px;
-  margin-left: 5px;
-  cursor: pointer;
-  border-radius: 5px;
+  margin-left: 10px;
+  border-radius: 10px;
   font-size: 16px;
-  transition: background-color 0.3s; /* Weiche Farbänderung beim Hover */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 #send-button:hover {
-  background-color: #1565c0; /* Dunkleres Blau beim Hover */
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #333;
 }
 
 .message {
   display: inline-block;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   max-width: 80%;
   word-wrap: break-word;
   font-size: 15px;
+  position: relative;
+}
+
+.message::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  border-width: 10px;
+  border-style: solid;
 }
 
 .user-message {
-  background-color: #1e88e5;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
   align-self: flex-end;
+  backdrop-filter: blur(5px);
+}
+
+.user-message::after {
+  border-color: transparent rgba(255, 255, 255, 0.3) transparent transparent;
 }
 
 .bot-message {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #f0f0f0;
+  color: #ddd;
   align-self: flex-start;
+  backdrop-filter: blur(5px);
+}
+
+.bot-message::after {
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.1);
 }
