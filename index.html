@@ -1,16 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jora Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-  <div id="chat-icon" class="chat-icon">💬</div>
-  <div id="chat-container" class="chat-container" style="display: none;">
-    <div class="chat-header">
-      Jora
-      <span id="close-chat" class="close-chat">&times;</span>
-    </div>
-    <div id="chat-box" class="chat-box"></div>
-    <div class="chat-input-container">
-      <input type="text" id="chat-input" placeholder="Stellen Sie Ihre Frage..." />
-      <button id="send-button">Send</button>
-    </div>
-  </div>
 
-  <script src="script.js"></script>
+<div class="chat-icon-container" id="chatIcon" onclick="toggleChat()">
+  <div class="chat-icon">💬</div> <!-- Einfaches Symbol -->
+</div>
+
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header">
+    Jora
+    <span class="close-btn" onclick="toggleChat()">×</span>
+  </div>
+  <div class="chat-box" id="chatBox">
+    <div class="message bot-message">Hallo, ich bin Jora, wie kann ich Ihnen helfen?</div>
+  </div>
+  <div class="chat-input-container">
+    <input type="text" id="chat-input" placeholder="Stellen Sie Ihre Frage...">
+    <button id="send-button">Send</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
+</html>
