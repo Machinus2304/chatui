@@ -12,7 +12,7 @@ document.getElementById("chat-input").addEventListener("keypress", function (eve
     }
 });
 
-function sendMessage() {
+async function sendMessage() {
     console.log("sendMessage function gestartet");  // Debugging Log
 
     const inputBox = document.getElementById("chat-input");
@@ -27,32 +27,27 @@ function sendMessage() {
     inputBox.value = "";
     console.log("Nachricht an displayMessage gesendet:", message);  // Debugging Log
 
-    // API Call to n8n Webhook
-    axios.post("https://n8n.ai-solution.org/webhook/28b891e3-bfc8-49ca-b59c-359997074752", { message })
-        .then(response => {
-            // Log the full response to see what we get back
-            console.log("API Antwort:", response);
-
-            // Extract the message from the response data and display it
-            const botMessage = response.data.answer || "Sorry, something went wrong.";
-            displayMessage(botMessage, "bot-message");
-        })
-        .catch(error => {
-            // Display a user-friendly error message
-            displayMessage("Error: Could not reach the server.", "bot-message");
-
-            // Log detailed error information
-            console.error("Es gab einen Fehler:", error);
-            if (error.response) {
-                console.error("Status Code:", error.response.status);
-                console.error("Headers:", error.response.headers);
-                console.error("Data:", error.response.data);
-            } else if (error.request) {
-                console.error("Die Anfrage wurde gesendet, aber keine Antwort erhalten:", error.request);
-            } else {
-                console.error("Fehler beim Anfragenaufbau:", error.message);
-            }
+    try {
+        console.log("Vor dem API-Aufruf mit Fetch");  // Debugging Log
+        const response = await fetch("https://n8n.ai-solution.org/webhook/28b891e3-bfc8-49ca-b59c-359997074752", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: message })
         });
+        
+        if (!response.ok) {
+            throw new Error(`Server responded with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("API Antwort:", data);  // Debugging Log
+        displayMessage(data.answer || "Sorry, something went wrong.", "bot-message");
+    } catch (error) {
+        displayMessage("Error: Could not reach the server.", "bot-message");
+        console.error("Es gab einen Fehler:", error);  // Debugging Log für Fehlerdetails
+    }
 }
 
 function displayMessage(text, className) {
