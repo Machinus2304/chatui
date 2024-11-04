@@ -1,7 +1,6 @@
 const chatContainer = document.getElementById("chatContainer");
 const chatIcon = document.getElementById("chatIcon");
 
-// Chat ein-/ausblenden
 function toggleChat() {
   if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
     chatContainer.style.display = "flex";
@@ -12,7 +11,6 @@ function toggleChat() {
   }
 }
 
-// Initiales Öffnen und anschließendes leichtes Aufpoppen alle 5 Sekunden
 window.onload = () => {
   chatContainer.style.display = "flex";
   chatIcon.classList.add("hidden");
