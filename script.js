@@ -1,28 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const chatIcon = document.getElementById("chat-icon");
-  const chatContainer = document.getElementById("chat-container");
-  const closeChat = document.getElementById("close-chat");
+const chatContainer = document.getElementById("chatContainer");
+const chatIcon = document.getElementById("chatIcon");
 
-  // Öffne den Chat nach der Animation
-  setTimeout(() => {
-    chatContainer.style.display = "block";
+function toggleChat() {
+  if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+    chatContainer.style.display = "flex";
     chatIcon.style.display = "none";
-    displayWelcomeMessage();
-  }, 2000); // 2 Sekunden Verzögerung nach dem "Pop-in"
-
-  // Begrüßungsnachricht von Jora anzeigen
-  function displayWelcomeMessage() {
-    const chatBox = document.getElementById("chat-box");
-    const messageElement = document.createElement("div");
-    messageElement.className = "message bot-message";
-    messageElement.textContent = "Hallo, ich bin Jora, Ihr KI-Chatbot. Wie kann ich Ihnen helfen?";
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-
-  // Chat schließen
-  closeChat.addEventListener("click", () => {
+  } else {
     chatContainer.style.display = "none";
     chatIcon.style.display = "block";
-  });
-});
+  }
+}
+
+document.getElementById("send-button").addEventListener("click", sendMessage);
+
+function sendMessage() {
+  const input = document.getElementById("chat-input").value;
+  if (input.trim() === "") return;
+
+  const userMessage = document.createElement("div");
+  userMessage.className = "message user-message";
+  userMessage.textContent = input;
+  document.getElementById("chatBox").appendChild(userMessage);
+  document.getElementById("chat-input").value = "";
+
+  const botReply = document.createElement("div");
+  botReply.className = "message bot-message";
+  botReply.textContent = "Ihre Frage wird bearbeitet...";
+  document.getElementById("chatBox").appendChild(botReply);
+}
