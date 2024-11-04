@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat UI</title>
+  <title>Jora Chat</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <div id="chat-icon" class="chat-icon">💬</div>
-  
-  <div class="chat-container" id="chat-container">
-    <div class="chat-header">Jora <span id="close-chat" class="close-chat">×</span></div>
-    <div id="chat-box" class="chat-box"></div>
-    <div class="chat-input-container">
-      <input type="text" id="chat-input" placeholder="Stellen Sie Ihre Frage..." autocomplete="off">
-      <button id="send-button">Send</button>
-    </div>
+
+<div class="chat-icon-container" id="chatIcon">
+  <div class="chat-icon"></div>
+</div>
+
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header">
+    Jora
+    <span class="close-btn" onclick="toggleChat()">×</span>
   </div>
+  <div class="chat-box" id="chatBox">
+    <div class="message bot-message">Hallo, ich bin Jora, Ihr KI-Chatbot. Wie kann ich Ihnen helfen?</div>
+  </div>
+  <div class="chat-input-container">
+    <input type="text" id="chat-input" placeholder="Stellen Sie Ihre Frage...">
+    <button id="send-button">Send</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
