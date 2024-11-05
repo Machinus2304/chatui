@@ -1,20 +1,13 @@
+/* styles.css */
+
+/* Grundlegende Stile für den Body */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     margin: 0;
 }
 
-/* Vergrößertes Chat-Symbol */
-.chat-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 36px; /* Erhöht von 24px */
-    cursor: pointer;
-    animation: pop-up 2s ease;
-}
-
-/* Chat-Container mit Transparenz */
+/* Chat-Container */
 .chat-container {
     width: 300px;
     background-color: rgba(30, 30, 30, 0.6); /* 60% Transparenz */
@@ -30,85 +23,22 @@ body {
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
+/* Chat-Container geöffnet */
 .chat-container.open {
     transform: translateY(0);
     opacity: 1;
 }
 
-.hidden {
-    display: none;
-}
-
+/* Chat-Header */
 .chat-header {
     padding: 10px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(46, 46, 46, 0.6);
+    background-color: rgba(46, 46, 46, 0.6); /* Passend zur Transparenz */
 }
 
+/* Chat-Nachrichtenbereich */
 .chat-box {
-    padding: 10px;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: transparent;
-}
-
-.chat-input-container {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(46, 46, 46, 0.6);
-}
-
-#chat-input {
-    flex: 1;
-    padding: 5px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-}
-
-#send-button {
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#send-button:hover {
-    background-color: #005bb5;
-}
-
-.message {
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 5px;
-    max-width: 80%;
-    word-wrap: break-word;
-    color: white;
-}
-
-.bot-message {
-    background-color: #2e2e2e; /* Dunkleres Grau */
-    align-self: flex-start;
-}
-
-.user-message {
-    background-color: #4d4d4d; /* Helleres Grau */
-    align-self: flex-end;
-}
-
-.close-chat {
-    cursor: pointer;
-}
-
-@keyframes pop-up {
-    0% { transform: scale(0.8); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
+   
