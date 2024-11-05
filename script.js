@@ -6,25 +6,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatInput = document.getElementById("chat-input");
     const sendButton = document.getElementById("send-button");
 
-    // Open chat after animation
+    // Öffnet den Chat nach der Animation
     setTimeout(() => {
-        chatContainer.style.display = "block";
+        chatContainer.classList.add("open");
         chatIcon.style.display = "none";
-    }, 2000); // Adjusted to delay opening for a pop-in effect
+    }, 2000); // Wartezeit für den Pop-in-Effekt
 
-    // Show chat box on icon click and hide icon
+    // Zeigt den Chat an, wenn auf das Symbol geklickt wird, und versteckt das Symbol
     chatIcon.addEventListener("click", () => {
-        chatContainer.style.display = "block";
+        chatContainer.classList.add("open");
         chatIcon.style.display = "none";
     });
 
-    // Close chat box and show icon
+    // Schließt den Chat und zeigt das Symbol an
     closeChat.addEventListener("click", () => {
-        chatContainer.style.display = "none";
+        chatContainer.classList.remove("open");
         chatIcon.style.display = "block";
     });
 
-    // Send message function
+    // Funktion zum Senden von Nachrichten
     function sendMessage() {
         const message = chatInput.value.trim();
         if (message === "") return;
@@ -32,13 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
         displayMessage(message, "user-message");
         chatInput.value = "";
 
-        // Simulate bot response for demonstration
+        // Simuliert eine Bot-Antwort zur Demonstration
         setTimeout(() => {
             displayMessage("Hier ist eine Antwort von Jora.", "bot-message");
         }, 1000);
     }
 
-    // Display message in chat box
+    // Zeigt eine Nachricht im Chatfenster an
     function displayMessage(text, className) {
         const messageElement = document.createElement("div");
         messageElement.className = `message ${className}`;
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    // Event listeners for sending messages
+    // Event-Listener für das Senden von Nachrichten
     sendButton.addEventListener("click", sendMessage);
     chatInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
