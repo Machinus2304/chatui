@@ -4,9 +4,20 @@ body {
     margin: 0;
 }
 
+/* Vergrößertes Chat-Symbol */
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 36px; /* Erhöht von 24px */
+    cursor: pointer;
+    animation: pop-up 2s ease;
+}
+
+/* Chat-Container mit Transparenz */
 .chat-container {
     width: 300px;
-    background-color: #1e1e1e; /* Dunkles Hintergrundbild */
+    background-color: rgba(30, 30, 30, 0.6); /* 60% Transparenz */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -24,27 +35,31 @@ body {
     opacity: 1;
 }
 
+.hidden {
+    display: none;
+}
+
 .chat-header {
     padding: 10px;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2e2e2e;
+    background-color: rgba(46, 46, 46, 0.6);
 }
 
 .chat-box {
     padding: 10px;
     max-height: 200px;
     overflow-y: auto;
-    background-color: #1e1e1e;
+    background-color: transparent;
 }
 
 .chat-input-container {
     display: flex;
     padding: 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: #2e2e2e;
+    background-color: rgba(46, 46, 46, 0.6);
 }
 
 #chat-input {
@@ -75,26 +90,17 @@ body {
     margin-bottom: 5px;
     max-width: 80%;
     word-wrap: break-word;
+    color: white;
 }
 
 .bot-message {
-    background-color: #444;
+    background-color: #2e2e2e; /* Dunkleres Grau */
     align-self: flex-start;
 }
 
 .user-message {
-    background-color: #0078d4;
-    color: white;
+    background-color: #4d4d4d; /* Helleres Grau */
     align-self: flex-end;
-}
-
-.chat-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    animation: pop-up 2s ease;
 }
 
 .close-chat {
