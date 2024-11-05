@@ -8,19 +8,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Öffnet den Chat nach der Animation
   setTimeout(() => {
-    chatContainer.classList.remove("hidden");
+    chatContainer.classList.add("open");
     chatIcon.style.display = "none";
   }, 2000); // Wartezeit für den Pop-in-Effekt
 
   // Zeigt den Chat an, wenn auf das Symbol geklickt wird, und versteckt das Symbol
   chatIcon.addEventListener("click", () => {
-    chatContainer.classList.toggle("hidden");
+    chatContainer.classList.add("open");
     chatIcon.style.display = "none";
   });
 
   // Schließt den Chat und zeigt das Symbol an
   closeChat.addEventListener("click", () => {
-    chatContainer.classList.add("hidden");
+    chatContainer.classList.remove("open");
     chatIcon.style.display = "block";
   });
 
