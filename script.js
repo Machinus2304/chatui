@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayMessage(text, className) {
     const messageElement = document.createElement("div");
     messageElement.className = `message ${className}`;
-    
-    // Extrahiere den Text und die Quelle (Link) aus der Antwort
-    const linkRegex = /Source Link:\s*```json\s*{.*?"source":\s*"(.*?)"\s*}```/;
+
+    // Aktualisierter regulärer Ausdruck, um den Link korrekt zu extrahieren
+    const linkRegex = /```json\s*{\s*"source":\s*"(.*?)"\s*}\s*```/;
     const match = text.match(linkRegex);
 
     if (match) {
