@@ -61,7 +61,37 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayMessage(text, className) {
     const messageElement = document.createElement("div");
     messageElement.className = `message ${className}`;
-    messageElement.textContent = text;
+    
+    // Extrahiere den Text und die Quelle (Link) aus der Antwort
+    const linkRegex = /Source Link:\s*```json\s*{.*?"source":\s*"(.*?)"\s*}```/;
+    const match = text.match(linkRegex);
+
+    if (match) {
+        // Entferne den Link-Text aus der Hauptnachricht
+        text = text.replace(linkRegex, "").trim();
+
+        // Erstelle den Text-Teil der Nachricht
+        const textNode = document.createTextNode(text);
+        messageElement.appendChild(textNode);
+
+        // Erstelle die Fußnote mit dem Link
+        const linkElement = document.createElement("a");
+        linkElement.href = match[1];
+        linkElement.textContent = "Quelle";
+        linkElement.target = "_blank"; // Öffne den Link in einem neuen Tab
+        linkElement.className = "footnote-link";
+
+        // Füge die Fußnote unterhalb des Textes hinzu
+        const footnoteElement = document.createElement("div");
+        footnoteElement.className = "footnote";
+        footnoteElement.appendChild(linkElement);
+
+        messageElement.appendChild(footnoteElement);
+    } else {
+        // Wenn kein Link gefunden wird, füge nur den Text hinzu
+        messageElement.textContent = text;
+    }
+
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight;
   }
