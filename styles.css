@@ -47,20 +47,52 @@ body {
 /* Nachrichtenstil */
 .message {
     margin: 5px 0;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 70%; /* Nachrichtenbreite auf 70% begrenzen */
 }
 
 .user-message {
     background-color: rgba(255, 255, 255, 0.4); /* Weiß mit 40% Transparenz */
     color: black; /* Textfarbe auf schwarz ändern für bessere Lesbarkeit */
-    text-align: right;
+    text-align: left;
+    align-self: flex-end; /* Nachrichten von Benutzern rechtsbündig */
+    margin-left: auto;
+}
+
+/* Pfeil für Benutzer-Nachricht */
+.user-message::after {
+    content: '';
+    position: absolute;
+    right: -10px; /* Positioniert den Pfeil auf der rechten Seite */
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid rgba(255, 255, 255, 0.4); /* Pfeilfarbe passend zur Nachricht */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
 }
 
 .bot-message {
     background-color: #333;
     color: white;
     text-align: left;
+    align-self: flex-start; /* Nachrichten vom Bot linksbündig */
+    margin-right: auto;
+}
+
+/* Pfeil für Bot-Nachricht */
+.bot-message::after {
+    content: '';
+    position: absolute;
+    left: -10px; /* Positioniert den Pfeil auf der linken Seite */
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-right: 10px solid #333; /* Pfeilfarbe passend zur Nachricht */
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
 }
 
 /* Stil für die Fußnote */
@@ -84,7 +116,7 @@ body {
 
 #chat-input {
     flex: 1;
-    padding: 8px; /* Weniger Padding für kleinere Höhe */
+    padding: 8px;
     border: none;
     border-radius: 5px;
     outline: none;
