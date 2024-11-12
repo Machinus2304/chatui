@@ -52,7 +52,7 @@ body {
 }
 
 .user-message {
- background-color: rgba(255, 255, 255, 0.5); /* Weiß mit 50% Transparenz */
+    background-color: rgba(255, 255, 255, 0.5); /* Weiß mit 50% Transparenz */
     color: black; /* Textfarbe auf schwarz ändern für bessere Lesbarkeit */
     text-align: right;
 }
@@ -65,11 +65,44 @@ body {
 
 /* Stil für die Fußnote */
 .footnote {
-    font-size: 1em;
+    font-size: 0.8em;
     margin-top: 5px;
 }
 
 .footnote-link {
     color: #add8e6; /* Helle Farbe für den Link */
     text-decoration: underline;
+}
+
+/* Chat-Eingabebereich */
+.chat-input-container {
+    display: flex;
+    padding: 10px;
+    background-color: rgba(46, 46, 46, 0.6); /* Gleiche Transparenz wie der Chat-Header */
+    border-top: 1px solid #333;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+#send-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-button:hover {
+    background-color: #45a049;
 }
